@@ -5,6 +5,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 const Home = () => import("@/views/Home.vue");
 const HelloWorld = () => import("@/views/HelloWorld.vue");
 const Search = () => import("@/views/search/index.vue");
+// const Search = () => import("@/views/search/index.jsx")
 
 // 2. 定义一些路由
 // 每个路由都需要映射到一个组件。

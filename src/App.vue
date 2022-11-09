@@ -4,11 +4,19 @@
 </script>
 
 <template>
-  <router-link to="/">Home   </router-link>
-  <router-link to="/helloworld">HelloWorld   </router-link>
-  <router-link to="/search">Search</router-link>
-  <router-view></router-view>
+  <div class="common-layout">
+    <el-container>
+      <el-header>
+        <router-link to="/helloworld">test </router-link>
+        <router-link to="/search">Search</router-link>
+      </el-header>
+      <el-main>
+        <router-view></router-view>
+      </el-main>
+    </el-container>
+  </div>
 </template>
 
 <style scoped>
+
 </style>
