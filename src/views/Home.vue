@@ -7,8 +7,7 @@ const global = GlobalStore();
 </script>
 
 <template>
-  <h1>Home</h1>
-  <div>{{ global }}</div>
+  <h1>欢迎页</h1>
 
 </template>
 

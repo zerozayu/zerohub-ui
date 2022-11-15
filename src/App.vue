@@ -7,11 +7,19 @@
   <div class="common-layout">
     <el-container>
       <el-header>
-        <router-link to="/helloworld">test </router-link>
-        <router-link to="/search">Search</router-link>
+        <el-row :gutter="20">
+          <el-col :span="12">
+            <router-link to="/upload">upload</router-link>
+          </el-col>
+          <el-col :span="12">
+            <router-link to="/search">Search</router-link>
+          </el-col>
+
+        </el-row>
+
       </el-header>
       <el-main>
-        <router-view></router-view>
+        <router-view />
       </el-main>
     </el-container>
   </div>

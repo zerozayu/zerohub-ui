@@ -2,7 +2,7 @@ import request from "@/utils/request";
 
 export const searchAll = (query: any) => {
     return request({
-        url: "/search",
+        url: "/backend-api/search",
         method: "get",
         params: query
     })
@@ -10,7 +10,7 @@ export const searchAll = (query: any) => {
 
 export const searchByFilename = (query: any) => {
     return request({
-        url: "/search/filename",
+        url: "/backend-api/search/filename",
         method: "get",
         params: query
     });
@@ -18,7 +18,7 @@ export const searchByFilename = (query: any) => {
 
 export const searchByContent = (query: any) => {
     return request({
-        url: "/search/content",
+        url: "/backend-api/search/content",
         method: "get",
         params: query
     });
