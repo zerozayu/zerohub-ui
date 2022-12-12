@@ -2,20 +2,29 @@ import http from "@/utils/http";
 
 const backendBaseUrl = "/backend-api/upload";
 const api = {
+  check: backendBaseUrl + "/check",
   chunk: backendBaseUrl + "/chunk",
   merge: backendBaseUrl + "/merge",
 };
 
 const upload = {
+  check(chunkHash: string, currChunkNo: string) {
+    return http.get(api.check, {
+      params: {
+        chunkHash: chunkHash,
+        currChunkNo: currChunkNo,
+      },
+    });
+  },
   chunk(formData) {
     return http.post(api.chunk, formData);
   },
-  merge(hash, file) {
+  merge(fileHash, filename) {
     return http.get(api.merge, {
       params: {
-        hash: hash,
-        filename: file,
-      }
+        fileHash: fileHash,
+        filename: filename,
+      },
     });
   },
 };

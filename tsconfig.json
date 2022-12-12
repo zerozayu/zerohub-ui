@@ -31,7 +31,8 @@
     },
     // 指定全局组件类型
     "types": [
-      "element-plus/global"
+      "element-plus/global",
+      "vite-plugin-svg-icons/client"
     ]
   },
   "include": [

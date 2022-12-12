@@ -4,7 +4,9 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 // 也可以从其他文件导入
 const Home = () => import("@/views/Home.vue");
 const Search = () => import("@/views/search/index.vue");
-const Upload = () => import("@/views/search/upload.vue")
+const Upload = () => import("@/views/upload/upload.vue");
+const Video = () => import("@/views/video/video.vue");
+
 
 // 2. 定义一些路由
 // 每个路由都需要映射到一个组件。
@@ -33,6 +35,14 @@ const routes: Array<RouteRecordRaw> = [
             title: "search",
         },
         component: Search,
+    },
+    {
+        path: "/video",
+        name: "video",
+        meta: {
+            title: "video",
+        },
+        component: Video,
     },
 ];
 

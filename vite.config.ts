@@ -1,11 +1,11 @@
-import { defineConfig, loadEnv } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig, loadEnv } from "vite";
+import vue from "@vitejs/plugin-vue";
 
 // jsx 语法支持
-import vueJsx from '@vitejs/plugin-vue-jsx';
+import vueJsx from "@vitejs/plugin-vue-jsx";
 
 // 设置别名
-import * as path from 'path';
+import * as path from "path";
 
 // 按需导入-自动导入
 // import AutoImport from 'unplugin-auto-import/vite'
@@ -13,9 +13,9 @@ import * as path from 'path';
 // import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 // svg 图标
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 
-
+import VueSetupExtend from "vite-plugin-vue-setup-extend";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -34,37 +34,42 @@ export default defineConfig(({ mode }) => {
       // }),
       createSvgIconsPlugin({
         // 指定需要缓存的图标文件夹
-        iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
+        iconDirs: [path.resolve(process.cwd(), "src/assets/icons")],
         // 指定symbolId格式
-        symbolId: '[name]',
-
+        symbolId: "icon-[dir]-[name]",
+        
         /**
          * 自定义插入位置
          * @default: body-last
          */
-        // inject?: 'body-last' | 'body-first'
+        //  inject?: 'body-last' | 'body-first'
 
-        /**
-         * custom dom id
-         * @default: __svg__icons__dom__
-         */
-        // customDomId: '__svg__icons__dom__',
+         /**
+          * custom dom id
+          * @default: __svg__icons__dom__
+          */
+        //  customDomId: '__svg__icons__dom__',
       }),
+      // 自定义组件名称
+      VueSetupExtend(),
     ],
     resolve: {
       // 设置别名
       alias: {
-        '@': path.resolve(__dirname, 'src')
-      }
+        "@": path.resolve(__dirname, "src"),
+      },
     },
     css: {
       // css 预处理器
       preprocessorOptions: {
         less: {
           javascriptEnabled: true,
-          additionalData: `@import "${path.resolve(__dirname, 'src/assets/style/global.less')}";`,
-        }
-      }
+          additionalData: `@import "${path.resolve(
+            __dirname,
+            "src/assets/style/global.less"
+          )}";`,
+        },
+      },
     },
     server: {
       host: "0.0.0.0", // 默认为localhost
@@ -76,10 +81,10 @@ export default defineConfig(({ mode }) => {
           target: "http://localhost:8081", // 后端服务实际地址
           changeOrigin: true,
           //rewrite: (path) => path.replace(/^\/dev-api/, ""),
-          rewrite: path => path.replace(new RegExp('^' + env.VITE_APP_BASE_API), '')
+          rewrite: (path) =>
+            path.replace(new RegExp("^" + env.VITE_APP_BASE_API), ""),
         },
       },
     },
-  }
-
-})
+  };
+});

@@ -12,8 +12,12 @@ import 'element-plus/dist/index.css'
 // element plus 图标
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
-// svg 图标
+// svg 图片
+// 引入注册脚本
 import 'virtual:svg-icons-register'
+// svg 全局组件注册
+import SvgIcon from "@/components/svg-icon/index.vue";
+
 
 
 
@@ -22,6 +26,7 @@ const app = createApp(App);
 app.use(ElementPlus, { size: 'small', zIndex: 3000 })
 .use(store)
 .use(router)
+.component("svg-icon", SvgIcon)
 .mount('#app');
 
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {

@@ -6,25 +6,30 @@
 <template>
   <div class="common-layout">
     <el-container>
-      <el-header>
-        <el-row :gutter="20">
-          <el-col :span="12">
-            <router-link to="/upload">upload</router-link>
-          </el-col>
-          <el-col :span="12">
-            <router-link to="/search">Search</router-link>
-          </el-col>
-
-        </el-row>
-
-      </el-header>
-      <el-main>
-        <router-view />
-      </el-main>
+      <el-aside width="200px">
+        <el-menu router :default-active="this.$router.path">
+          <el-menu-item index="/search" >
+            <el-icon><search /></el-icon>
+            <span>文件搜索</span>
+          </el-menu-item>
+          <el-menu-item index="/upload">
+            <el-icon><Upload /></el-icon>
+            <span>文件上传</span>
+          </el-menu-item>
+          <el-menu-item index="/video">
+            <el-icon><VideoPlay /></el-icon>
+            <span>视频播放</span>
+          </el-menu-item>
+        </el-menu>
+      </el-aside>
+      <el-container>
+        <!-- <el-header>ZeroHub</el-header> -->
+        <el-main>
+          <router-view />
+        </el-main>
+      </el-container>
     </el-container>
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
