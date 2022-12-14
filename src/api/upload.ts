@@ -8,22 +8,22 @@ const api = {
 };
 
 const upload = {
-  check(chunkHash: string, currChunkNo: string) {
+  check(fileHash: string) {
     return http.get(api.check, {
       params: {
-        chunkHash: chunkHash,
-        currChunkNo: currChunkNo,
+        fileHash: fileHash,
       },
     });
   },
   chunk(formData) {
     return http.post(api.chunk, formData);
   },
-  merge(fileHash, filename) {
+  merge(filename: string, fileHash: string, chunkSize: number) {
     return http.get(api.merge, {
       params: {
-        fileHash: fileHash,
         filename: filename,
+        fileHash: fileHash,
+        chunkSize: chunkSize,
       },
     });
   },

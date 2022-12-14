@@ -8,8 +8,9 @@
     <el-container>
       <el-aside width="200px">
         <el-menu router :default-active="this.$router.path">
-          <el-menu-item index="/search" >
-            <el-icon><search /></el-icon>
+          <svg-icon name="bilibili-bilibili_logo" class-name="svg-class-demo" />
+          <el-menu-item index="/search">
+            <el-icon><Search /></el-icon>
             <span>文件搜索</span>
           </el-menu-item>
           <el-menu-item index="/upload">
@@ -32,4 +33,9 @@
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.svg-class-demo {
+  width: 100px;
+  height: 50px;
+}
+</style>
