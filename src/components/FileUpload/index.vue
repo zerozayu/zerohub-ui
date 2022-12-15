@@ -1,63 +1,53 @@
 <template>
   <div class="file-up-app">
-    <el-tabs
-      v-model="activeName"
-      class="file-upload-tabs"
-      disabled
-      @tab-change="handleTabChange"
-    >
-      <el-tab-pane :name="tabName.uploadBody">
-        <div class="upload-body">
-          <el-upload
-            ref="uploadRef"
-            action="#"
-            :auto-upload="false"
-            :show-file-list="true"
-            :on-change="handleChange"
-            drag
-          >
-            <svg-icon class="upload-icon" name="upload"></svg-icon>
-            <div class="el-upload__text">拖拽到此处也可以添加</div>
+    <div class="upload-body">
+      <el-upload
+        ref="uploadRef"
+        action="#"
+        :auto-upload="false"
+        :show-file-list="true"
+        :on-change="handleChange"
+        drag
+      >
+        <svg-icon class="upload-icon" name="upload"></svg-icon>
+        <div class="el-upload__text">拖拽到此处也可以添加</div>
 
-            <el-button class="el-button-upload" size="large" type="primary"
-              >添加待上传文件</el-button
-            >
-          </el-upload>
+        <el-button class="el-button-upload" size="large" type="primary"
+          >添加待上传文件</el-button
+        >
+      </el-upload>
 
-          <!-- 进度显示 -->
-          <!-- <div class="progress-box">
+      <!-- 进度显示 -->
+      <!-- <div class="progress-box">
             <span>上传进度：{{ percent.toFixed() }}%</span>
             <el-button type="primary" size="small" @click="handleClickBtn">{{
               upload ? " 暂停" : "继续"
             }}</el-button>
           </div> -->
+    </div>
+
+    <div class="upload-content">
+      <div class="file-quexue">
+        <div class="file-queue-title">
+          <span class="file-queue-title-text">上传文件</span>
         </div>
-      </el-tab-pane>
-      <el-tab-pane lazy :name="tabName.uploadContent">
-        <div class="upload-content">
-          <div class="file-quexue">
-            <div class="file-queue-title">
-              <span class="file-queue-title-text">上传文件</span>
-            </div>
-          </div>
-          <el-button type="primary" @click="handleClickUploadBtn"
-            >上传文件</el-button
-          >
-          <div class="task-list">
-            <div class="task-item" v-for="file in fileList">
-              <el-card class="box-card">
-                <template #header>
-                  <div class="card-header">
-                    <span>{{ file.filename }}</span>
-                  </div>
-                </template>
-                {{ JSON.stringify(file) }}
-              </el-card>
-            </div>
-          </div>
+      </div>
+      <el-button type="primary" @click="handleClickUploadBtn"
+        >上传文件</el-button
+      >
+      <div class="task-list">
+        <div class="task-item" v-for="file in fileList">
+          <el-card class="box-card">
+            <template #header>
+              <div class="card-header">
+                <span>{{ file.filename }}</span>
+              </div>
+            </template>
+            {{ JSON.stringify(file) }}
+          </el-card>
         </div>
-      </el-tab-pane>
-    </el-tabs>
+      </div>
+    </div>
     <!-- <el-upload
       ref="uploadRef"
       action="#"
@@ -373,6 +363,8 @@ const sendMergeFileListRequest = (filename: string, fileHash: string) => {
         background: #eeeeef;
         border-radius: 10px;
         flex-wrap: wrap;
+      }
+      .task-item {
       }
     }
     .file-queue-title {
